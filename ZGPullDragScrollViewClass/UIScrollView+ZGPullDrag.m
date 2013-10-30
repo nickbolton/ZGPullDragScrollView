@@ -129,6 +129,16 @@ static char UIScrollViewWasDragging;
     }
 }
 
+- (void)removeZGPullView {
+    [self.pullView removeFromSuperview];
+    self.pullView = nil;
+}
+
+- (void)removeZGDragView {
+    [self.dragView removeFromSuperview];
+    self.dragView = nil;
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"contentOffset"]) {
         [self scrollViewDidScroll:[[change valueForKey:NSKeyValueChangeNewKey] CGPointValue]];
@@ -138,6 +148,7 @@ static char UIScrollViewWasDragging;
 }
 
 - (void)scrollViewDidScroll:(CGPoint )contentOffset {
+    
     CGFloat yOffset = contentOffset.y;
     if (yOffset<0) {
         [self pullViewHandler:-yOffset];

@@ -28,5 +28,8 @@
 @interface UIScrollView (ZGPullDrag)
 - (void)addZGPullView:(UIView *)pullView;
 - (void)addZGDragView:(UIView *)dragView;
+- (void)removeZGPullView;
+- (void)removeZGDragView;
+
 @property (nonatomic) id <ZGPullDragViewDelegate> pullDragDelegate;
 @end
